@@ -11,17 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserEditComponent implements OnInit {
   title: string = "user edit";
-  jr:JsonResponse;
+  jr: JsonResponse;
   user: User;
   userIdStr: string;
 
 
   constructor(
-    private userSvc: UserService, 
+    private userSvc: UserService,
     private router: Router,
     private route: ActivatedRoute) { }
 
-  edit(){
+  edit() {
     this.userSvc.edit(this.user).subscribe(
       jresp => {
         this.jr = jresp;
@@ -33,12 +33,12 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     //get user from database
     this.route.params.subscribe(params =>
-                            //id is from app routing module
-        this.userIdStr = params['id']);
+      //id is from app routing module
+      this.userIdStr = params['id']);
     this.userSvc.get(this.userIdStr).subscribe(jresp => {
-        this.jr = jresp;
-        this.user = this.jr.data as User;
-      })
+      this.jr = jresp;
+      this.user = this.jr.data as User;
+    })
   }
 
 }

@@ -29,4 +29,8 @@ export class VendorService {
     return this.http.delete(this.url + vendor.id) as Observable<JsonResponse>;
   };
 
+  edit(vendor: Vendor): Observable<any>{
+    return this.http.put(this.url, vendor)
+  }
+
 }

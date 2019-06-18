@@ -15,10 +15,18 @@ export class VendorService {
 
   list(): Observable<JsonResponse>{
     return this.http.get(this.url) as Observable<JsonResponse>;
-  }
+  };
+
+  get(vendorId:string){
+    return this.http.get(this.url+vendorId) as Observable<JsonResponse>;
+  };
 
   create(vendor: Vendor): Observable<any>{
     return this.http.post(this.url, vendor) as Observable<JsonResponse>;
-  }
+  };
+
+  remove(vendor: Vendor): Observable<any>{
+    return this.http.delete(this.url + vendor.id) as Observable<JsonResponse>;
+  };
 
 }

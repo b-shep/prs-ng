@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonResponse } from '@model/json-response.class';
+import { Vendor } from '@model/vendor.class';
+import { VendorService } from '@svc/vendor.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-detail',
@@ -6,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendor-detail.component.css']
 })
 export class VendorDetailComponent implements OnInit {
+  title: string = "vendor detatail";
+  jr:JsonResponse;
+  vendor: Vendor;
+  userIdStr: string;
 
-  constructor() { }
+  constructor(
+    private vendorSvc: VendorService, 
+    private router: Router, 
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params =>
+      this.userIdStr = params['id']);
+  
+    this.vendorSvc.get(this.userIdStr).subscribe(jresp => {
+      this.jr = jresp;
+      this.vendor = this.jr.data as Vendor;
+      });
   }
 
+  remove(){
+    this.vendorSvc.remove(this.vendor).subscribe(
+      jresp => {
+        this.jr = jresp;
+        this.vendor = this.jr.data as Vendor;
+        this.router.navigate(['/vendor/list']);
+      });
+    }
 }

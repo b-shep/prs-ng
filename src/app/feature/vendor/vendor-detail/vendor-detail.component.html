@@ -1,38 +1,54 @@
 <app-menu></app-menu>
 <div class='component-content'>
-		<div class = 'lefthalf'>
-			<span class='component-title'>[{{title}}]</span>
-		</div>
-  <table class="table table-sm" *ngIf='user'>
+  <div class='lefthalf'>
+    <span class='component-title'>[{{title}}]</span>
+  </div>
+  <table class="table table-sm" *ngIf='vendor'>
     <tr>
-      <td>Id</td><td>{{ user.id}}</td>
+      <td>Id</td>
+      <td>{{ vendor.id }}</td>
     </tr>
     <tr>
-      <td>CodeS</td><td>{{ user.userName }}</td>
+      <td>Code</td>
+      <td>{{ vendor.code }}</td>
     </tr>
     <tr>
-      <td>FirstName</td><td>{{ user.firstName }}</td>
+      <td>Name</td>
+      <td>{{ vendor.name }}</td>
     </tr>
     <tr>
-      <td>Last Name</td><td>{{ user.lastName }}</td>
+      <td>Address</td>
+      <td>{{vendor.address }}</td>
     </tr>
     <tr>
-      <td>Phone</td><td>{{ user.phoneNumber }}</td>
+      <td>City</td>
+      <td>{{ vendor.city }}</td>
     </tr>
     <tr>
-      <td>Email</td><td>{{ user.email }}</td>
+      <td>State</td>
+      <td>{{ vendor.state }}</td>
     </tr>
     <tr>
-      <td>Admin</td><td>{{ user.admin }}</td>
+      <td>ZIP</td>
+      <td>{{ vendor.zip }}</td>
     </tr>
     <tr>
-      <td>Reviewer</td><td>{{ user.reviewer }}</td>
+      <td>Phone Number</td>
+      <td>{{ vendor.phoneNumber }}</td>
     </tr>
     <tr>
-	    <td colspan="2">
-	      <a routerLink='/user/edit/{{user.id}}' class='btn btn-primary' title='Edit'>Edit</a>
-	      <button (click)="remove()" class='btn btn-danger' title='Delete' style="margin: 10px;">Remove</button>
-	    </td>
+      <td>Email</td>
+      <td>{{ vendor.email }}</td>
+    </tr>
+    <tr>
+      <td>PreApproved?</td>
+      <td>{{ vendor.preApproved? "✔": "" }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a routerLink='/vendor/edit/{{vendor.id}}' class='btn btn-primary' title='Edit'>Edit</a>
+        <button (click)="remove()" class='btn btn-danger' title='Delete' style="margin: 10px;">Remove</button>
+      </td>
     </tr>
   </table>
 </div>

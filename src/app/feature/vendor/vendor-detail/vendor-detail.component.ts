@@ -10,10 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./vendor-detail.component.css']
 })
 export class VendorDetailComponent implements OnInit {
-  title: string = "vendor detatail";
+  title: string = "vendor detail";
   jr:JsonResponse;
   vendor: Vendor;
-  userIdStr: string;
+  vendorIdStr: string;
 
   constructor(
     private vendorSvc: VendorService, 
@@ -22,9 +22,9 @@ export class VendorDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params =>
-      this.userIdStr = params['id']);
+      this.vendorIdStr = params['id']);
   
-    this.vendorSvc.get(this.userIdStr).subscribe(jresp => {
+    this.vendorSvc.get(this.vendorIdStr).subscribe(jresp => {
       this.jr = jresp;
       this.vendor = this.jr.data as Vendor;
       });

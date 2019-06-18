@@ -1,4 +1,3 @@
-
 <app-menu></app-menu>
 <div class='component-content'>
   <div class='left-half'>
@@ -30,8 +29,8 @@
     <td>{{ user.email }}</td>
     <td>{{ user.reviewer? "Rvw": ""}} {{user.admin? ", Adm": ""}}</td>
     <td class='actions'>
-        <a routerLink='/user/detail/{{user.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
-        <a routerLink='/user/edit/{{user.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+      <a routerLink='/user/detail/{{user.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+      <a routerLink='/user/edit/{{user.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
     </td>
   </tr>
 </table>

@@ -22,6 +22,7 @@
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Phone Number</u></a></th>
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Email</u></a></th>
     <th class="table-secondary btn-link"><u>preApproved?</u></th>
+    <th class="table-secondary btn-link">Action</th>
   </tr>
   <tr *ngFor='let vendor of vendors'>
     <td>{{ vendor.id }}</td>
@@ -34,6 +35,9 @@
     <td>{{ vendor.phoneNumber }}</td>
     <td>{{ vendor.email }}</td>
     <td>{{ vendor.preApproved? "✔": "" }}</td>
-    <td></td>
+    <td class='actions'>
+        <a routerLink='/vendor/detail/{{vendor.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+        <a routerLink='/vendor/edit/{{vendor.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+    </td>
   </tr>
 </table>

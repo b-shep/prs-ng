@@ -8,9 +8,9 @@ import { UserDetailComponent } from './feature/user/user-detail/user-detail.comp
 
 import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.component';
 import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-create.component';
+import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
 
 import { AboutComponent } from './core/menu/about/about.component';
-import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/list', pathMatch: 'full' },
@@ -24,7 +24,7 @@ const routes: Routes = [
   
   {path: 'vendor/list', component: VendorListComponent},
   {path: 'vendor/create', component:VendorCreateComponent},
-  {path: 'vendor/detail', component: VendorDetailComponent},
+  {path: 'vendor/detail/:id', component: VendorDetailComponent},
 
   {path:'about', component: AboutComponent},
   

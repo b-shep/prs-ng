@@ -11,12 +11,20 @@ import { ProductService } from '@svc/product.service';
 export class ProductListComponent implements OnInit {
   title:string = "product list";
   jr:JsonResponse;
-  products: Product;
+  products: Product[];
 
   constructor(private productSvc:ProductService) { }
 
   ngOnInit() {
-    
+    this.productSvc.list().subscribe(
+      jresp =>{
+        this.jr = jresp;
+        if (this.jr.errors == null){
+          this.products = this.jr.data as Product[];
+        } else{
+          console.log("error getting products");
+        }
+      });
   }
 
 }

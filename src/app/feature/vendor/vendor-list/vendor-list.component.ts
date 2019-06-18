@@ -32,7 +32,7 @@ export class VendorListComponent implements OnInit {
             // i must decide how to handle these errors
           }
       }
-    )
+    );
   }
 
 }

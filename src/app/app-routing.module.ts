@@ -12,6 +12,7 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
 import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
 
 import { AboutComponent } from './core/menu/about/about.component';
+import { ProductListComponent } from './feature/product/product-list/product-list.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/list', pathMatch: 'full' },
@@ -27,6 +28,8 @@ const routes: Routes = [
   {path: 'vendor/detail/:id', component: VendorDetailComponent},
   {path: 'vendor/edit/:id', component: VendorEditComponent},
   {path: 'vendor/remove/:id', component: VendorEditComponent},
+
+  {path: 'product/list', component: ProductListComponent},
 
   {path:'about', component: AboutComponent},
   

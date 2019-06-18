@@ -16,6 +16,10 @@ import { UserEditComponent } from './feature/user/user-edit/user-edit.component'
 import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
 import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-create.component';
+import { ProductListComponent } from './feature/product/product-list/product-list.component';
+import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
+import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
+import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
 
 
 
@@ -31,7 +35,11 @@ import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-cre
     UserEditComponent,
     VendorDetailComponent,
     VendorEditComponent,
-    VendorCreateComponent
+    VendorCreateComponent,
+    ProductListComponent,
+    ProductCreateComponent,
+    ProductDetailComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

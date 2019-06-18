@@ -10,8 +10,10 @@ import { JsonResponse } from '@model/json-response.class';
   styleUrls: ['./vendor-list.component.css']
 })
 export class VendorListComponent implements OnInit {
+  title:string = "vendor list";
   jr: JsonResponse;
   vendors: Vendor[];
+
   
 
 

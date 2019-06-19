@@ -5,54 +5,42 @@
   </div>
   <p *ngIf='!product'>Loading...</p>
   <div *ngIf='product'>
+    <div class='form-group row' >
+      <label class='col-form-label col-sm-2' for="vendor">Vendor:</label>
+      <div class=' col-sm-6'>
+        <select [(ngModel)]='product.vendor' class='form-control' name='Vendor' id='vendor'>
+          <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.name}}</option>
+        </select>
+      </div>
+    </div>
     <div class="form-group row">
-      <label class='col-form-label col-sm-2' for="productCode">Code:</label>
+      <label class='col-form-label col-sm-2' for="productPartNumber">Part Number:</label>
                                                   <!-- for refers to the id of the input box -->
-      <input [(ngModel)]='product.code' name = 'Code' type="text" class="form-control col-sm-6" id="productCode" aria-describedby="fnameHelp" placeholder="Code">
+      <input [(ngModel)]='product.partNumber' name = 'partNumber' type="text" class="form-control col-sm-6" id="productPartNumber" aria-describedby="partNumberHelp" placeholder="partNumber">
             <!-- [(ngModel)] refers to a two-way binding  -->                                                             <!-- points to small -->
       <!-- small sits to the right of text box and gives a little description of what text box should be or could be used for errors-->
-      <small id="codeHelp" class="form-text text-muted col-sm-2">product Code</small>
+      <small id="partNumberHelp" class="form-text text-muted col-sm-2">product's Part Number</small>
     </div>
     <div class="form-group row">
-      <label class='col-form-label col-sm-2' for="name">Name:</label>
-      <input [(ngModel)]='product.name' name = 'Name' type="text" class="form-control col-sm-6" id="name" aria-describedby="nameHelp" placeholder="Name">
-      <small id="nameHelp" class="form-text text-muted col-sm-2">product Name</small>
+      <label class='col-form-label col-sm-2' for="productName">Name:</label>
+      <input [(ngModel)]='product.name' name = 'name' type="text" class="form-control col-sm-6" id="productName" aria-describedby="nameHelp" placeholder="name">
+      <small id="nameHelp" class="form-text text-muted col-sm-2">product's Name</small>
     </div>
     <div class="form-group row">
-      <label class='col-form-label col-sm-2' for="address">Address:</label>
-      <input [(ngModel)]='product.address' name = 'Address' type="text" class="form-control col-sm-6" id="address" aria-describedby="addressHelp" placeholder="Address">
-      <small id="addressHelp" class="form-text text-muted col-sm-2">product Address</small>
+      <label class='col-form-label col-sm-2' for="productPrice">Price:</label>
+      <input [(ngModel)]='product.price' name = 'price' type="text" class="form-control col-sm-6" id="productPrice" aria-describedby="priceHelp" placeholder="price">
+      <small id="priceHelp" class="form-text text-muted col-sm-2">product's price</small>
     </div>
     <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="city">City:</label>
-        <input [(ngModel)]='product.city' name = 'City' type="text" class="form-control col-sm-6" id="city" aria-describedby="cityHelp" placeholder="City">
-        <small id="cityHelp" class="form-text text-muted col-sm-2">product City</small>
+      <label class='col-form-label col-sm-2' for="unit">Unit:</label>
+      <input [(ngModel)]='product.unit' name = 'unit' type="text" class="form-control col-sm-6" id="unit" aria-describedby="unitHelp" placeholder="unit">
+      <small id="pwdHelp" class="form-text text-muted col-sm-2">product's unit</small>
     </div>
     <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="state">State:</label>
-        <input [(ngModel)]='product.state' name = 'State' type="text" class="form-control col-sm-6" id="state" aria-describedby="stateHelp" placeholder="State">
-        <small id="stateHelp" class="form-text text-muted col-sm-2">product State</small>
+      <label class='col-form-label col-sm-2' for="photoPath">PhotoPath:</label>
+      <input [(ngModel)]='product.photoPath' name = 'photoPath' type="text" class="form-control col-sm-6" id="photoPath" aria-describedby="photoPathHelp" placeholder="photoPath">
+      <small id="photoPathHelp" class="form-text text-muted col-sm-2">product's PhotoPath</small>
     </div>
-    <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="zip">Zip:</label>
-        <input [(ngModel)]='product.zip' name = 'Zip' type="text" class="form-control col-sm-6" id="zip" aria-describedby="zipHelp" placeholder="Zip">
-        <small id="zipHelp" class="form-text text-muted col-sm-2">product Zip</small>
-    </div>
-    <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="phoneNumber">Phone Number:</label>
-        <input [(ngModel)]='product.phoneNumber' name = 'PhoneNumber' type="text" class="form-control col-sm-6" id="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="PhoneNumber">
-        <small id="phoneNumberHelp" class="form-text text-muted col-sm-2">product Phone Number</small>
-    </div>
-    <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="email">Email:</label>
-        <input [(ngModel)]='product.email' name = 'Email' type="text" class="form-control col-sm-6" id="email" aria-describedby="emailHelp" placeholder="Email">
-        <small id="emailHelp" class="form-text text-muted col-sm-2">product Email</small>
-    </div>
-    <div class="form-group row">
-        <label class='col-form-label col-sm-2' for="preApproved">PreApproved?</label>
-        <input [(ngModel)]=product.preApproved name = 'PreApproved' type="checkbox" class="form-control col-sm-6" id="preApproved" aria-describedby="preApprovedHelp" placeholder="PreApproved">
-        <small id="preApprovedHelp" class="form-text text-muted col-sm-2">PreApproved</small>
-      </div>
     <div class='form-group'>
       <!-- could add cancel button later that goes back to list -->
       <button (click)='create()' class='btn btn-primary'>Create</button>

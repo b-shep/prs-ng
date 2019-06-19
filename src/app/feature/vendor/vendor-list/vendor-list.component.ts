@@ -10,11 +10,11 @@ import { JsonResponse } from '@model/json-response.class';
   styleUrls: ['./vendor-list.component.css']
 })
 export class VendorListComponent implements OnInit {
-  title:string = "vendor list";
+  title: string = "vendor list";
   jr: JsonResponse;
   vendors: Vendor[];
 
-  
+
 
 
   constructor(private vendorSvc: VendorService) { }
@@ -22,15 +22,15 @@ export class VendorListComponent implements OnInit {
   ngOnInit() {
     this.vendorSvc.list().subscribe(
       jresp => {
-          this.jr = jresp;
-          if (this.jr.errors == null){
+        this.jr = jresp;
+        if (this.jr.errors == null) {
           this.vendors = this.jr.data as Vendor[];
           console.log(this.vendors);
-          }
-          else{
-            console.log("error getting vendors");
-            // i must decide how to handle these errors
-          }
+        }
+        else {
+          console.log("error getting vendors");
+          // i must decide how to handle these errors
+        }
       }
     );
   }

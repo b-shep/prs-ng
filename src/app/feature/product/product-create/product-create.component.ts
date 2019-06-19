@@ -3,6 +3,8 @@ import { JsonResponse } from '@model/json-response.class';
 import { Product } from '@model/product.class';
 import { ProductService } from '@svc/product.service';
 import { Router, Route } from '@angular/router';
+import { Vendor } from '@model/vendor.class';
+import { VendorService } from '@svc/vendor.service';
 
 @Component({
   selector: 'app-product-create',
@@ -12,15 +14,25 @@ import { Router, Route } from '@angular/router';
 export class ProductCreateComponent implements OnInit {
   title:string = "product-create";
   jr: JsonResponse;
-  product: Product;
-  productId: string;
+  //intsatntiate an instance in order to provide fields for form
+  product: Product = new Product();
+  vendors: Vendor[];
 
   constructor(
     private productSvc: ProductService, 
     private router: Router,
-    private route: Route) { }
+    private vendorSvc: VendorService
+    ) { }
 
   ngOnInit() {
+    this.vendorSvc.list().subscribe(
+      jresp =>{
+        this.jr = jresp;
+        if (this.jr.errors == null){
+          this.vendors = this.jr.data as Vendor[];
+        }
+      }
+    );
   }
 
   create(){
@@ -28,7 +40,7 @@ export class ProductCreateComponent implements OnInit {
       .subscribe( jresp =>{
         this.jr = jresp;
         if (this.jr.errors == null){
-          this.product = this.jr.data as Product;
+          this.router.navigate(['/product/list']);
         } else {
           console.log("error saving product");
         }

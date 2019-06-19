@@ -16,9 +16,20 @@ export class ProductService {
     return this.http.get(this.url) as Observable<JsonResponse>;
   };
 
-  create(product:Product): Observable<JsonResponse>{
-    return this.http.post(this.url, product) as Observable<JsonResponse>;
+  get(productId: string): Observable<JsonResponse>{
+    return this.http.get(this.url + productId) as Observable<JsonResponse>;
   }
 
+  create(product:Product): Observable<JsonResponse>{
+    return this.http.post(this.url, product) as Observable<JsonResponse>;
+  };
+
+  edit(product:Product): Observable<JsonResponse>{
+    return this.http.put(this.url, product) as Observable<JsonResponse>;
+  }
+
+  delete(productId: string): Observable<JsonResponse>{
+    return this.http.delete(this.url + productId) as Observable<JsonResponse>;
+  }
 
 }

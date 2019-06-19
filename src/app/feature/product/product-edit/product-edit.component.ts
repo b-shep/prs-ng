@@ -18,9 +18,6 @@ export class ProductEditComponent implements OnInit {
   product: Product;
   vendors: Vendor[];
 
-  sortCriteria: string = "id";
-  sortOrder: string = "asc"; // or anything else for desc
-
   constructor(
     private productSvc: ProductService,
     private router: Router,
@@ -60,13 +57,5 @@ export class ProductEditComponent implements OnInit {
     return v1 === v2;
   }
 
-  sortBy(column: string): void {
-    if(this.sortCriteria === column) {
-      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-    } else {
-      this.sortCriteria = column;
-      this.sortOrder = 'asc';
-    }
-  }
 
 }

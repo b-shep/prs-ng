@@ -13,6 +13,9 @@ export class ProductListComponent implements OnInit {
   jr:JsonResponse;
   products: Product[];
 
+  sortCriteria: string = "id";
+  sortOrder: string = "asc";
+
   constructor(private productSvc:ProductService) { }
 
   ngOnInit() {
@@ -25,6 +28,15 @@ export class ProductListComponent implements OnInit {
           console.log("error getting products");
         }
       });
+  }
+
+  sortBy(column: string): void {
+    if(this.sortCriteria === column) {
+      this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortCriteria = column;
+      this.sortOrder = 'asc';
+    }
   }
 
 }

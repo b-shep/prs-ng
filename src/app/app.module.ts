@@ -24,8 +24,7 @@ import { PrListComponent } from './feature/pr/pr-list/pr-list.component';
 import { PrCreateComponent } from './feature/pr/pr-create/pr-create.component';
 import { PrEditComponent } from './feature/pr/pr-edit/pr-edit.component';
 import { PrDetailComponent } from './feature/pr/pr-detail/pr-detail.component';
-
-
+import { SortPipe } from './pipe/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +32,7 @@ import { PrDetailComponent } from './feature/pr/pr-detail/pr-detail.component';
     UserListComponent,
     MenuComponent,
     AboutComponent,
+    SortPipe,
     VendorListComponent,
     UserCreateComponent,
     UserDetailComponent,

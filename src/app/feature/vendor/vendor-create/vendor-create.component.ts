@@ -19,15 +19,17 @@ export class VendorCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  create(){
+  create() {
     this.vendorSvc.create(this.vendor)
       .subscribe(jresp => {
-        //assuming a good call
         this.jr = jresp;
-        this.router.navigate(['/vendor/list']);
+        if (this.jr.errors == null) {
+          this.router.navigate(['/vendor/list']);
+        }else{
+          console.log("error creating vendor");
+        }
       });
-
-  }
+    }
 }
 
 

@@ -20,6 +20,10 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { PrListComponent } from './feature/pr/pr-list/pr-list.component';
+import { PrCreateComponent } from './feature/pr/pr-create/pr-create.component';
+import { PrEditComponent } from './feature/pr/pr-edit/pr-edit.component';
+import { PrDetailComponent } from './feature/pr/pr-detail/pr-detail.component';
 
 
 
@@ -39,7 +43,11 @@ import { ProductEditComponent } from './feature/product/product-edit/product-edi
     ProductListComponent,
     ProductCreateComponent,
     ProductDetailComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    PrListComponent,
+    PrCreateComponent,
+    PrEditComponent,
+    PrDetailComponent
   ],
   imports: [
     BrowserModule,

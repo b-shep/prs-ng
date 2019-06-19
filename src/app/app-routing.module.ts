@@ -13,6 +13,7 @@ import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.co
 
 import { AboutComponent } from './core/menu/about/about.component';
 import { ProductListComponent } from './feature/product/product-list/product-list.component';
+import { PrListComponent } from './feature/pr/pr-list/pr-list.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/list', pathMatch: 'full' },
@@ -30,6 +31,8 @@ const routes: Routes = [
   {path: 'vendor/remove/:id', component: VendorEditComponent},
 
   {path: 'product/list', component: ProductListComponent},
+
+  {path: 'pr/list', component: PrListComponent},
 
   {path:'about', component: AboutComponent},
   

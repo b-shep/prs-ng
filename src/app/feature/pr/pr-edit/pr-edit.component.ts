@@ -28,6 +28,8 @@ export class PrEditComponent implements OnInit {
         this.prIdStr = params['id'];
       });
 
+    console.log(this.route);
+
     this.prSvc.get(this.prIdStr).subscribe(jresp => {
       this.jr = jresp;
       this.pr = this.jr.data as Pr;

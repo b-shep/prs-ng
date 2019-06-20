@@ -33,7 +33,7 @@ export class PrService {
   }
 
   lines(pr:Pr){
-    return this.http.post(this.url + "lines-for-pr" + pr.id, pr) as Observable<JsonResponse>;
+    return this.http.post(this.url + "lines-for-pr/" + pr.id, pr) as Observable<JsonResponse>;
   }
 
 }

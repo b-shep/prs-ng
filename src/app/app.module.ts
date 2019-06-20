@@ -25,6 +25,8 @@ import { PrCreateComponent } from './feature/pr/pr-create/pr-create.component';
 import { PrEditComponent } from './feature/pr/pr-edit/pr-edit.component';
 import { PrDetailComponent } from './feature/pr/pr-detail/pr-detail.component';
 import { SortPipe } from './pipe/sort.pipe';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { PrLinesComponent } from './feature/pr/pr-lines/pr-lines.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { SortPipe } from './pipe/sort.pipe';
     PrListComponent,
     PrCreateComponent,
     PrEditComponent,
-    PrDetailComponent
+    PrDetailComponent,
+    UserLoginComponent,
+    PrLinesComponent
   ],
   imports: [
     BrowserModule,

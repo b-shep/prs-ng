@@ -29,6 +29,7 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe(params =>
       //id is from app routing module
       this.productIdStr = params['id']);
+      
     this.productSvc.get(this.productIdStr).subscribe(jresp => {
       this.jr = jresp;
       this.product = this.jr.data as Product;

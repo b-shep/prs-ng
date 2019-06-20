@@ -16,6 +16,12 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { PrListComponent } from './feature/pr/pr-list/pr-list.component';
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
+import { PrCreateComponent } from './feature/pr/pr-create/pr-create.component';
+import { PrEditComponent } from './feature/pr/pr-edit/pr-edit.component';
+import { PrDetailComponent } from './feature/pr/pr-detail/pr-detail.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
+import { PrLinesComponent } from './feature/pr/pr-lines/pr-lines.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/list', pathMatch: 'full' },
@@ -25,6 +31,7 @@ const routes: Routes = [
   {path:'user/detail/:id', component: UserDetailComponent},
   {path:'user/edit/:id', component: UserEditComponent},
   {path:'user/remove/:id', component: UserEditComponent},
+  {path: 'user/login', component: UserLoginComponent},
   
   {path: 'vendor/list', component: VendorListComponent},
   {path: 'vendor/create', component:VendorCreateComponent},
@@ -35,8 +42,14 @@ const routes: Routes = [
   {path: 'product/list', component: ProductListComponent},
   {path: 'product/create', component: ProductCreateComponent},
   {path: 'product/edit/:id', component: ProductEditComponent},
+  {path: 'product/detail/:id', component: ProductDetailComponent},
 
   {path: 'pr/list', component: PrListComponent},
+  {path: 'pr/create', component: PrCreateComponent},
+  {path: 'pr/edit/:id', component: PrEditComponent},
+  {path: 'pr/detail/:id', component: PrDetailComponent},
+  {path: 'pr/lines/:id', component: PrLinesComponent},
+
 
   {path:'about', component: AboutComponent},
   

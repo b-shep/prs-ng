@@ -1,3 +1,41 @@
-<p>
-  pr-create works!
-</p>
+<app-menu></app-menu>
+<div id='component'>
+  <div id = "pagetitle">
+	<span>[{{title}}]</span>
+  </div>
+  <p *ngIf='!pr'>Loading...</p>
+  <div *ngIf='pr'>
+    <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="desction">User:</label>
+        <input [(ngModel)]='pr.user.userName' name = 'User' type="text" class="form-control col-sm-6" id="name" aria-describedby="userHelp" placeholder="PrUser" disabled>
+        <small id="UserHelp" class="form-text text-muted col-sm-2">Pr User</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="prdescription">Description:</label>
+                                                  <!-- for refers to the id of the input box -->
+      <input [(ngModel)]='pr.description' name = 'description' type="text" class="form-control col-sm-6" id="prdescription" aria-describedby="descriptionHelp" placeholder="description">
+            <!-- [(ngModel)] refers to a two-way binding  -->                                                             <!-- points to small -->
+      <!-- small sits to the right of text box and gives a little description of what text box should be or could be used for errors-->
+      <small id="descriptionHelp" class="form-text text-muted col-sm-2">pr's Description</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="prJustification">Justification:</label>
+      <input [(ngModel)]='pr.justification' name = 'justification' type="text" class="form-control col-sm-6" id="prJustification" aria-describedby="justificationHelp" placeholder="justification">
+      <small id="justificationHelp" class="form-text text-muted col-sm-2">pr's Justification</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="prDateNeeded">Date Needed:</label>
+      <input [(ngModel)]='pr.dateNeeded' name = 'dateNeeded' type="date" class="form-control col-sm-6" id="prDateNeeded" aria-describedby="dateNeededHelp" placeholder="dateNeeded">
+      <small id="dateNeededHelp" class="form-text text-muted col-sm-2">pr's Date Needed</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="deliveryMode">Delivery Mode:</label>
+      <input [(ngModel)]='pr.deliveryMode' name = 'deliveryMode' type="text" class="form-control col-sm-6" id="deliveryMode" aria-describedby="deliveryModeHelp" placeholder="deliveryMode">
+      <small id="pwdHelp" class="form-text text-muted col-sm-2">pr's Delivery Mode</small>
+    </div>
+    <div class='form-group'>
+      <!-- could add cancel button later that goes back to list -->
+      <button (click)='create()' class='btn btn-primary'>Create</button>
+    </div>
+  </div>
+</div>

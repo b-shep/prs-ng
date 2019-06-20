@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonResponse } from '@model/json-response.class';
+import { Pr } from '@model/pr.class';
+import { PrService } from '@svc/pr.service';
+import { Router } from '@angular/router';
+import { UserService } from '@svc/user.service';
+import { User } from '@model/user.class';
+import { SystemService } from '@svc/system.service';
 
 @Component({
   selector: 'app-pr-create',
@@ -6,10 +13,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pr-create.component.css']
 })
 export class PrCreateComponent implements OnInit {
+  title:string = "pr-create";
+  jr:JsonResponse;
+  pr:Pr = new Pr();
+  user: User;
 
-  constructor() { }
+
+  constructor(
+    private prSvc:PrService,
+    private sysSvc: SystemService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    if(this.sysSvc.data.user.loggedIn){
+      this.pr.user = this.sysSvc.data.user.instance;
+    } else{
+      console.error("user not logged in");
+    }
+  }
+
+  create(){
+    this.prSvc.create(this.pr).subscribe(
+      jresp =>{
+        this.jr = jresp;
+        if (this.jr.errors == null){
+          this.router.navigate(['/pr/list']);
+        } else {
+          console.log("error saving pr");
+        }
+      }
+    )
   }
 
 }

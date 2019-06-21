@@ -31,8 +31,7 @@ export class ProductCreateComponent implements OnInit {
         if (this.jr.errors == null){
           this.vendors = this.jr.data as Vendor[];
         }
-      }
-    );
+      });
   }
 
   create(){

@@ -21,7 +21,7 @@
         <td>{{ pr.total }}</td>
     </tr>
 </table>
-
+<span class='component-title'>{{title}}</span>
 <table class='table table-sm' *ngIf='prlis.length > 0'>
     <tr>
         <th class="table-secondary "><u>Id</u></th>
@@ -39,7 +39,7 @@
         <td>{{ prli.quantity * prli.product.price }}</td>
         <td class='actions' style="display: inline-flex">
                 <a routerLink='/prli/edit/{{prli.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
-                <a routerLink='/pr/delete/{{prli.id}}'><img src='assets/delete.jpg' width='20' height='20' title='Delete'></a>
+                <a routerLink='/prli/delete/{{prli.id}}'><img src='assets/delete.jpg' width='20' height='20' title='Delete'></a>
         </td>
     </tr>
 </table>

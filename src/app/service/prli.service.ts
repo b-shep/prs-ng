@@ -8,7 +8,7 @@ import { JsonResponse } from '@model/json-response.class';
   providedIn: 'root'
 })
 export class PrliService {
-  url: string = "http://localhost:8080/purchase-request-line-items";
+  url: string = "http://localhost:8080/purchase-request-line-items/";
 
   constructor(private http: HttpClient) { }
 

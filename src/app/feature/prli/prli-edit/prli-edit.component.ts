@@ -3,6 +3,8 @@ import { JsonResponse } from '@model/json-response.class';
 import { Prli } from '@model/prli.class';
 import { PrliService } from '@svc/prli.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Product } from '@model/product.class';
+import { ProductService } from '@svc/product.service';
 
 @Component({
   selector: 'app-prli-edit',
@@ -10,15 +12,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./prli-edit.component.css']
 })
 export class PrliEditComponent implements OnInit {
-  title:string = "prli-create";
+  title:string = "prli-edit";
   jr:JsonResponse;
   prli:Prli;
   prliIdStr:string;
   prIdStr:number;
+  products: Product[];
+
 
 
   constructor(
     private prliSvc: PrliService,
+    private productSvc: ProductService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -32,8 +37,14 @@ export class PrliEditComponent implements OnInit {
       jresp => {
         this.jr = jresp;
         this.prli = this.jr.data as Prli;
-        this.prIdStr = this.prli.pr.id;
+        this.prIdStr =  this.prli.purchaseRequest.id;
       });
+    this.productSvc.list().subscribe(
+      jresp=>{
+        this.jr = jresp;
+        this.products = this.jr.data as Product[];
+      }
+    )
   }
 
   edit(){
@@ -41,5 +52,9 @@ export class PrliEditComponent implements OnInit {
       jresp =>{
         this.router.navigate(['pr/lines/' + this.prIdStr]);
       });
+  }
+
+  compareFn(v1: number, v2: number): boolean {
+    return v1 === v2;
   }
 }

@@ -16,6 +16,7 @@ export class PrLinesComponent implements OnInit {
   prIdStr: string;
   jr: JsonResponse;
   prlis: Prli[];
+  lengthcheck:boolean = false;
 
 
   constructor(
@@ -39,12 +40,17 @@ export class PrLinesComponent implements OnInit {
           this.jr = jresp;
           if (this.jr.errors == null) {
             this.prlis = this.jr.data as Prli[];
+            if(this.prlis.length > 0){
+              this.lengthcheck = true;
+            }
           } else {
             console.log('error getting prlis for lines')
           }
       });
     });
 
+
+    
   }
 
 }

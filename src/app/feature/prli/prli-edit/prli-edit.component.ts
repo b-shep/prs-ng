@@ -49,7 +49,7 @@ export class PrliEditComponent implements OnInit {
 
   edit(){
     this.prliSvc.edit(this.prli).subscribe(
-      jresp =>{
+      jresp => {
         this.router.navigate(['pr/lines/' + this.prIdStr]);
       });
   }
@@ -57,4 +57,5 @@ export class PrliEditComponent implements OnInit {
   compareFn(v1: number, v2: number): boolean {
     return v1 === v2;
   }
+
 }

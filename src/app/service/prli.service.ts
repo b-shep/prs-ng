@@ -20,5 +20,11 @@ export class PrliService {
     return this.http.put(this.url, prli) as Observable<JsonResponse>;
   }
 
+  create(prli: Prli){
+    return this.http.post(this.url, prli) as Observable<JsonResponse>;
+  }
 
+  delete(prliIdStr: string){
+    return this.http.delete(this.url + prliIdStr) as Observable<JsonResponse>;
+  }
 }

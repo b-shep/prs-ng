@@ -16,7 +16,7 @@ export class Prli{
     ){}
 
     about(): string{
-        return "Purchase Request Line Item: id = " + this.id + ", Purchase Request Id: " + this.pr.id
+        return "Purchase Request Line Item: id = " + this.id + ", Purchase Request Id: " + this.purchaseRequest.id
         + ", product = " + this.product.name + ", quantity = " + this.quantity;
     }
     

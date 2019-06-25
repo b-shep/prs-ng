@@ -4,6 +4,7 @@ import { JsonResponse } from '@model/json-response.class';
 import { Prli } from '@model/prli.class';
 import { PrService } from '@svc/pr.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PrliService } from '@svc/prli.service';
 
 @Component({
   selector: 'app-pr-lines',
@@ -17,10 +18,12 @@ export class PrLinesComponent implements OnInit {
   jr: JsonResponse;
   prlis: Prli[];
   lengthcheck:boolean = false;
+  prliDeleteId:string
 
 
   constructor(
     private prSvc: PrService,
+    private prliSvc: PrliService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -48,9 +51,18 @@ export class PrLinesComponent implements OnInit {
           }
       });
     });
+  }
 
-
-    
+  delete(i:number){
+    console.log("i is " + i);
+    console.log("prli id is " + this.prlis[i].id)
+    let prliId:string = this.prlis[i].id.toString();
+    this.prliSvc.delete(prliId).subscribe(
+      jresp => {
+        this.jr = jresp;
+        //this.router.navigate(['pr/lines/' + this.prIdStr]);
+        this.ngOnInit();
+      });
   }
 
 }

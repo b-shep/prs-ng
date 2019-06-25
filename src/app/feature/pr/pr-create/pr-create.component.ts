@@ -3,7 +3,6 @@ import { JsonResponse } from '@model/json-response.class';
 import { Pr } from '@model/pr.class';
 import { PrService } from '@svc/pr.service';
 import { Router } from '@angular/router';
-import { UserService } from '@svc/user.service';
 import { User } from '@model/user.class';
 import { SystemService } from '@svc/system.service';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JsonResponse } from '@model/json-response.class';
 import { Product } from '@model/product.class';
 import { ProductService } from '@svc/product.service';
-import { Router, Route } from '@angular/router';
+import { Router } from '@angular/router';
 import { Vendor } from '@model/vendor.class';
 import { VendorService } from '@svc/vendor.service';
 

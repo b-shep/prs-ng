@@ -21,32 +21,31 @@
         <td>{{ pr.total }}</td>
     </tr>
 </table>
-<span class='component-title'>{{title}}</span>
+<span class='component-title'>{{title}}</span> 
+<span><a routerLink='/prli/create/{{ pr.id }}'><img id='createnew' class='img-responsive center-block ' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
 <table class='table table-sm' *ngIf='prlis'>
     <tr>
-        <th class="table-secondary "><u>Id</u></th>
         <th class="table-secondary "><u>Product</u></th>
         <th class="table-secondary "><u>Quantity</u></th>
         <th class="table-secondary "><u>Price</u></th>
         <th class="table-secondary "><u>Line Total</u></th>
         <th class="table-secondary "><u></u></th>
     </tr>
-    <tr *ngFor='let prli of prlis'>
-            <td *ngIf='lengthcheck'>{{ prli.id }}</td>
+    <tr *ngFor='let prli of prlis; let i = index'>
             <td *ngIf='lengthcheck'>{{ prli.product.name }}</td>
             <td *ngIf='lengthcheck'>{{ prli.quantity }}</td>
             <td *ngIf='lengthcheck'>{{ prli.product.price }}</td>
             <td *ngIf='lengthcheck'>{{ prli.quantity * prli.product.price }}</td>
             <td class='actions' style="display: inline-flex">
                     <a routerLink='/prli/edit/{{prli.id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
-                    <a routerLink='/prli/delete/{{prli.id}}'><img src='assets/delete.jpg' width='20' height='20' title='Delete'></a>
+                    <a routerLink='/pr/lines/{{ pr.id }}'> <img src='assets/delete.jpg' width='20' height='20' title='Delete' (click)="delete(i)"></a>
             </td>
     </tr>
     <tr *ngIf='!lengthcheck'>
-        <td><a routerLink='/prli/create'>No line items, click to add items,</a></td>
+        <td><a routerLink='/prli/create/{{ pr.id }}'>No line items, click to add items,</a></td>
     </tr>
 </table>
-<span><a routerLink='/prli/create'><img id='createnew' class='img-responsive center-block ' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+
 
 
 

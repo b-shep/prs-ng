@@ -18,9 +18,9 @@
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Justification</u></a></th>
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Date Needed</u></a></th>
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Delivery Mode</u></a></th>
-    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Status</u></a></th>
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Total</u></a></th>
     <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Submitted Date</u></a></th>
+    <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Status</u></a></th>
     <th class="table-secondary btn-link"><u>Reason For Rejection</u></th>
     <th class="table-secondary btn-link">Action</th>
   </tr>
@@ -31,9 +31,9 @@
     <td>{{ pr.justification }}</td>
     <td>{{ pr.dateNeeded }}</td>
     <td>{{ pr.deliveryMode }}</td>
-    <td>{{ pr.status }}</td>
     <td>{{ pr.total }}</td>
     <td>{{ pr.submittedDate }}</td>
+    <td>{{ pr.status }}</td>
     <td>{{ pr.reasonForRejection }}</td>
     <td class='actions' style="display: inline-flex">
         <a routerLink='/pr/detail/{{pr.id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>

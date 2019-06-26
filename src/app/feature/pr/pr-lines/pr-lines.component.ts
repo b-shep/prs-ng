@@ -12,7 +12,8 @@ import { PrliService } from '@svc/prli.service';
   styleUrls: ['./pr-lines.component.css']
 })
 export class PrLinesComponent implements OnInit {
-  title: string = "pr-lines";
+  title: string = "purchase-request";
+  title2: string = "line-items"
   pr: Pr;
   prIdStr: string;
   jr: JsonResponse;
@@ -54,8 +55,6 @@ export class PrLinesComponent implements OnInit {
   }
 
   delete(i:number){
-    console.log("i is " + i);
-    console.log("prli id is " + this.prlis[i].id)
     let prliId:string = this.prlis[i].id.toString();
     this.prliSvc.delete(prliId).subscribe(
       jresp => {
@@ -63,6 +62,15 @@ export class PrLinesComponent implements OnInit {
         //this.router.navigate(['pr/lines/' + this.prIdStr]);
         this.ngOnInit();
       });
+  }
+
+  submit(){
+    this.prSvc.submit(this.pr).subscribe(
+      jresp => {
+        this.jr = jresp;
+        this.router.navigate(['pr/list'])
+      }
+    )
   }
 
 }

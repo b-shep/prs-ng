@@ -33,7 +33,22 @@ export class PrService {
   }
 
   lines(pr:Pr){
-    return this.http.post(this.url + "lines-for-pr/" + pr.id, pr) as Observable<JsonResponse>;
+    return this.http.post(this.url + "/lines-for-pr/" + pr.id, pr) as Observable<JsonResponse>;
   }
 
+  reviewList(userId:string){
+    return this.http.get(this.url + "list-review/" + userId) as Observable<JsonResponse>;
+  }
+
+  approve(approvePr:Pr){
+    return this.http.put(this.url + "approve", approvePr) as Observable<JsonResponse>;
+  }
+
+  reject(rejectPr:Pr){
+    return this.http.put(this.url + "reject", rejectPr) as Observable<JsonResponse>;
+  }
+
+  submit(submitPr:Pr){
+    return this.http.put(this.url + 'submit-review', submitPr) as Observable<JsonResponse>;
+  }
 }

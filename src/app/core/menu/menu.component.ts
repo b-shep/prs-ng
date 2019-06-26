@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../../model/menu-item.class';
+import { SystemService } from '@svc/system.service';
+import { JsonResponse } from '@model/json-response.class';
+import { UserService } from '@svc/user.service';
+import { User } from '@model/user.class';
+import { PrService } from '@svc/pr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -18,11 +24,24 @@ export class MenuComponent implements OnInit {
     new MenuItem("About","/about","This is the about menu item")
   ]
 
-  constructor() { }
+  jr:JsonResponse;
+  user:User;
+  revCheck:boolean = false;
+
+
+  constructor(
+    private sysSvc:SystemService,
+    private userSvc: UserService, 
+    private prSvc: PrService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-;
-
+    if(this.sysSvc.data.user.loggedIn){
+      this.user = this.sysSvc.data.user.instance;
+    } else{
+      this.router.navigate['/user/login'];
+    }
   }
 
 }

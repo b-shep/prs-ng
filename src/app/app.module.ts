@@ -29,6 +29,7 @@ import { UserLoginComponent } from './feature/user/user-login/user-login.compone
 import { PrLinesComponent } from './feature/pr/pr-lines/pr-lines.component';
 import { PrliCreateComponent } from './feature/prli/prli-create/prli-create.component';
 import { PrliEditComponent } from './feature/prli/prli-edit/prli-edit.component';
+import { PrReviewComponent } from './feature/pr/pr-review/pr-review.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PrliEditComponent } from './feature/prli/prli-edit/prli-edit.component'
     UserLoginComponent,
     PrLinesComponent,
     PrliCreateComponent,
-    PrliEditComponent
+    PrliEditComponent,
+    PrReviewComponent
   ],
   imports: [
     BrowserModule,

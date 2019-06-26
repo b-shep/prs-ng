@@ -21,7 +21,7 @@
         <td>{{ pr.total }}</td>
     </tr>
 </table>
-<span class='component-title'>{{title}}</span> 
+<span class='component-title'>{{title2}}</span> 
 <span><a routerLink='/prli/create/{{ pr.id }}'><img id='createnew' class='img-responsive center-block ' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
 <table class='table table-sm' *ngIf='prlis'>
     <tr>
@@ -45,6 +45,8 @@
         <td><a routerLink='/prli/create/{{ pr.id }}'>No line items, click to add items,</a></td>
     </tr>
 </table>
+
+<button (click)='submit()'>Submit</button>
 
 
 

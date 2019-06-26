@@ -22,7 +22,7 @@ export class Pr{
         status: string = "",
         total: number = 0,
         submittedDate: Date = new Date("0000-00-00"),
-        reasonForRejection: string = ""){}
+        reasonForRejection: string = "none"){}
     
     about(): string{
         return "Purchase Request: id = " + this.id + ", user = " + this.user.userName + ", description = " + this.description + ", justification = " + this.justification +

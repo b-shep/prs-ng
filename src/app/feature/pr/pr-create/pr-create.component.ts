@@ -28,7 +28,7 @@ export class PrCreateComponent implements OnInit {
     if(this.sysSvc.data.user.loggedIn){
       this.pr.user = this.sysSvc.data.user.instance;
     } else{
-      console.error("user not logged in");
+      this.router.navigate['/user/login'];
     }
   }
 

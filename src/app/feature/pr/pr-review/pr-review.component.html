@@ -8,10 +8,8 @@
     </span>
   </div>
 </div>
-<div *ngIf='revCheck'>
-  <p *ngIf='prs.length==0'>No Available Purhcase Requests for Approval</p>
-  <!-- table table-sm = bootstrap -->
-  <table class='table table-sm' *ngIf='prs.length > 0'>
+<div *ngIf='prs'>
+  <table  [ngClass]="status? '': 'hide'" class='table table-sm' *ngIf='prs.length > 0'>
     <tr>
       <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Id</u></a></th>
       <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>User</u></a></th>
@@ -39,11 +37,44 @@
           <button (click)='reasonReject(i)' class="btn btn-default" style="width:20; height:20; padding:0px;"><img style='margin-left: 10px' src='assets/reject.jpg' width='20' height='20' title='Reject'></button>
           <button (click)='lines(i)' class="btn btn-default" style="width:20; height:20; padding:0px;"><img style='margin-left: 10px' src='assets/lines.png' width='20' height='20' title='Lines'></button>
       </td>
-      <div>
-        
-        <input style='width:100%;' *ngIf='pr.reasonForRejection=="change"' [(ngModel)]='reason' name = 'ReasonForRejection' type="text" class="form-control col-sm-6" id="userfirstname" aria-describedby="fnameHelp" placeholder="ReasonForRejection"> 
-        <button *ngIf='pr.reasonForRejection=="change"' (click)='reject(i)'>Reject</button>
-      </div>
     </tr>
   </table>
+  <div [ngClass]="status? 'hide': ''">
+    <table  class='table table-sm'>
+        <tr>
+            <th class="table-secondary "><u>Id</u></th>
+            <th class="table-secondary "><u>User</u></th>
+            <th class="table-secondary "><u>Status</u></th>
+            <th class="table-secondary "><u>Total</u></th>
+        </tr>
+        <tr *ngFor='let pr of rejectPr; let i = index'>
+            <td>{{ pr.id }}</td>
+            <td>{{ pr.user.userName }}</td>
+            <td>{{ pr.status }}</td>
+            <td>{{ pr.total }}</td>
+        </tr>
+    </table>
+    <table class='table table-sm'>
+        <tr>
+            <th class="table-secondary "><u>Product</u></th>
+            <th class="table-secondary "><u>Quantity</u></th>
+            <th class="table-secondary "><u>Price</u></th>
+            <th class="table-secondary "><u>Line Total</u></th>
+            <th class="table-secondary "><u></u></th>
+        </tr>
+        <tr *ngFor='let prli of prlis; let i = index'>
+                <td>{{ prli.product.name }}</td>
+                <td>{{ prli.quantity }}</td>
+                <td>{{ prli.product.price }}</td>
+                <td>{{ prli.quantity * prli.product.price }}</td>
+        </tr>
+    </table>
+  </div>
+  <div style="float: right" [ngClass]="status? 'hide': ''">
+    <input  [(ngModel)]='reason' name = 'ReasonForRejection' type="text" class="form-control col-sm-6" id="reasonReject" aria-describedby="fnameHelp" placeholder="ReasonForRejection"> 
+    <button class = 'btn btn-danger'(click)='reject()'>Reject</button>
+    <button *ngIf="lines" class = 'btn btn-success'(click)='reject()'>Approve</button>
+    <button class = 'btn btn' (click)=cancel()>Cancel</button>
+  </div>
+
 </div>

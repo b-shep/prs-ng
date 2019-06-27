@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '@model/user.class';
 import { Pr } from '@model/pr.class';
 import { JsonResponse } from '@model/json-response.class';
+import { Prli } from '@model/prli.class';
 
 @Component({
   selector: 'app-pr-review',
@@ -17,6 +18,11 @@ export class PrReviewComponent implements OnInit {
   jr: JsonResponse;
   revCheck: boolean;
   reason:string;
+  status:boolean = true;
+  rejectPr:Pr[];
+  prlis:Prli[];
+  rejectId:number;
+  linesCheck:boolean = true;
   
   constructor(
     private prSvc:PrService,
@@ -56,24 +62,41 @@ export class PrReviewComponent implements OnInit {
 
 
   reasonReject(i:number){
-    this.ngOnInit();
+    this.rejectId = i;
     let rejectPr:Pr = this.prs[i];
-    rejectPr.reasonForRejection = "change";
-    this.prSvc.edit(rejectPr).subscribe(
-      jresp =>{
-      }
-    )
-
-
+    this.rejectPr = [rejectPr];
+    this.prSvc.lines(rejectPr).subscribe(
+      jresp => {
+        this.jr = jresp;
+        if (this.jr.errors == null) {
+          this.prlis = this.jr.data as Prli[];
+          console.log("prlis are " + this.prlis)
+        } else {
+          console.log('error getting prlis for lines')
+        }
+    });
+    this.status = !this.status;
   }
+
+
   reject(i:number){
+    this.linesCheck = false;
     let rejectPr:Pr = this.prs[i];
-    rejectPr.reasonForRejection = this.reason;
+    rejectPr.reasonForRejection = this.reason
     this.prSvc.reject(rejectPr).subscribe(
       jresp =>{
         this.jr =jresp;
         this.ngOnInit();
       });
+  }
+
+  lines(i:number){
+    this.linesCheck=true;
+    this.reasonReject(i);
+  }
+
+  cancel(){
+    this.status = !this.status;
   }
 
 }

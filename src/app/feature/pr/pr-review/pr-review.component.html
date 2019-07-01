@@ -9,6 +9,7 @@
   </div>
 </div>
 <div *ngIf='prs'>
+  <p *ngIf='prs.length == 0'>No available Purchase Requests for Review</p>
   <table  [ngClass]="status? '': 'hide'" class='table table-sm' *ngIf='prs.length > 0'>
     <tr>
       <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"><u>Id</u></a></th>
@@ -47,7 +48,7 @@
             <th class="table-secondary "><u>Status</u></th>
             <th class="table-secondary "><u>Total</u></th>
         </tr>
-        <tr *ngFor='let pr of rejectPr; let i = index'>
+        <tr *ngFor='let pr of rejectPrs; let i = index'>
             <td>{{ pr.id }}</td>
             <td>{{ pr.user.userName }}</td>
             <td>{{ pr.status }}</td>
@@ -70,11 +71,15 @@
         </tr>
     </table>
   </div>
-  <div style="float: right" [ngClass]="status? 'hide': ''">
-    <input  [(ngModel)]='reason' name = 'ReasonForRejection' type="text" class="form-control col-sm-6" id="reasonReject" aria-describedby="fnameHelp" placeholder="ReasonForRejection"> 
-    <button class = 'btn btn-danger'(click)='reject()'>Reject</button>
-    <button *ngIf="lines" class = 'btn btn-success'(click)='reject()'>Approve</button>
-    <button class = 'btn btn' (click)=cancel()>Cancel</button>
+  <div [ngClass]="status? 'hide': ''">
+    <ul style="text-align: right" class="list-unstyled">
+      <li>
+        <button *ngIf="linesCheckforApprove" class = 'btn btn-success butt'(click)='approve()' >Approve</button>
+        <button class = 'btn btn-danger butt'(click)='reject()' >Reject</button>
+        <button class = 'btn btn butt' (click)=cancel() style="display: block; float: right;">Cancel</button>
+      </li>
+      </ul>
+    <input  [(ngModel)]='reason' name = 'reason for rejection' type="text" class="form-control butt" id="reasonReject" aria-describedby="fnameHelp" placeholder="Reason For Rejection" style="width: 40%; line-height: 80px; float:right">
   </div>
 
 </div>

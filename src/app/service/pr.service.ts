@@ -29,14 +29,16 @@ export class PrService {
   }
 
   delete(pr:Pr){
+    console.log("delete called to backend for pr id of " + pr.id);
     return this.http.delete(this.url + pr.id) as Observable<JsonResponse>;
   }
 
   lines(pr:Pr){
-    return this.http.post(this.url + "/lines-for-pr/" + pr.id, pr) as Observable<JsonResponse>;
+    return this.http.post(this.url + "lines-for-pr/" + pr.id, pr) as Observable<JsonResponse>;
   }
 
   reviewList(userId:string){
+    console.log("reviewList called for user " + userId)
     return this.http.get(this.url + "list-review/" + userId) as Observable<JsonResponse>;
   }
 
@@ -51,4 +53,5 @@ export class PrService {
   submit(submitPr:Pr){
     return this.http.put(this.url + 'submit-review', submitPr) as Observable<JsonResponse>;
   }
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@svc/user.service';
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import { JsonResponse } from '@model/json-response.class';
 import { User } from '@model/user.class';
 import { SystemService } from '@svc/system.service';
@@ -18,7 +18,8 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private userSvc: UserService,
     private sysSvc: SystemService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ) { }
 
 
@@ -36,8 +37,7 @@ export class UserLoginComponent implements OnInit {
           this.user = this.jr.data as User;
           this.sysSvc.data.user.instance = this.user;
           this.sysSvc.data.user.loggedIn = true;
-          this.router.navigateByUrl('user/list');
-          console.log("user logged in: " + this.user.userName)
+          this.router.navigateByUrl('/home');
         } else{
           this.message = "Invalid UserName/Password Combination. Please retry.";
         }

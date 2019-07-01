@@ -29,3 +29,14 @@ a:hover {
 body { 
     padding-top: 70px; 
 }
+
+.logout{
+    float: right;
+    text-decoration: none;
+    font-family: Tahoma;
+    margin-top: -7px;
+}
+
+.logout:hover {
+    background-color: black;
+}

@@ -14,15 +14,16 @@ import { Prli } from '@model/prli.class';
 })
 export class PrReviewComponent implements OnInit {
   user:User;
-  prs:Pr[];
+  prs:Pr[]=[];
   jr: JsonResponse;
   revCheck: boolean;
   reason:string;
   status:boolean = true;
-  rejectPr:Pr[];
+  rejectPrs:Pr[];
+  rejectPr:Pr;
   prlis:Prli[];
   rejectId:number;
-  linesCheck:boolean = true;
+  linesCheckforApprove:boolean = false;
   
   constructor(
     private prSvc:PrService,
@@ -31,24 +32,17 @@ export class PrReviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.sysSvc.data.user.loggedIn){
-      this.user = this.sysSvc.data.user.instance;
-      if (this.user.reviewer == false){
-        this.revCheck = false;
-      } else{
-        this.revCheck = true;
-        this.prSvc.reviewList(this.user.id.toString()).subscribe(
-          jresp =>{
-            this.jr = jresp;
-              this.prs = this.jr.data as Pr[];
-          });
-      }
-    } else{
-      this.router.navigate['/user/login'];
+    this.user = this.sysSvc.data.user.instance;
+    if(this.user == null){
+      this.router.navigateByUrl('user/login');
     }
-  }
-  notlogged(){
-    this.router.navigate['/user/login'];
+    console.log(this.user.id.toString() + " is user id");
+    this.prSvc.reviewList(this.user.id.toString()).subscribe(
+      jresp =>{
+        this.jr = jresp;
+          this.prs = this.jr.data as Pr[];
+          console.log("prs length is " + this.prs.length);
+      });
   }
 
   approve(i:number){
@@ -60,12 +54,16 @@ export class PrReviewComponent implements OnInit {
       });
   }
 
-
   reasonReject(i:number){
+    this.linesCheckforApprove = false;
+    this.reasonAction(i);
+  }
+  reasonAction(i:number){
     this.rejectId = i;
-    let rejectPr:Pr = this.prs[i];
-    this.rejectPr = [rejectPr];
-    this.prSvc.lines(rejectPr).subscribe(
+    console.log("reject id set to " + this.rejectId)
+    this.rejectPr = this.prs[i];
+    this.rejectPrs = [this.rejectPr];
+    this.prSvc.lines(this.rejectPr).subscribe(
       jresp => {
         this.jr = jresp;
         if (this.jr.errors == null) {
@@ -79,20 +77,20 @@ export class PrReviewComponent implements OnInit {
   }
 
 
-  reject(i:number){
-    this.linesCheck = false;
-    let rejectPr:Pr = this.prs[i];
-    rejectPr.reasonForRejection = this.reason
-    this.prSvc.reject(rejectPr).subscribe(
+  reject(){
+    this.rejectPr.reasonForRejection = this.reason
+    this.prSvc.reject(this.rejectPr).subscribe(
       jresp =>{
         this.jr =jresp;
+        this.status=!this.status;
         this.ngOnInit();
       });
   }
 
   lines(i:number){
-    this.linesCheck=true;
-    this.reasonReject(i);
+    this.linesCheckforApprove=true;
+    console.log("lines check is " + this.linesCheckforApprove)
+    this.reasonAction(i);
   }
 
   cancel(){

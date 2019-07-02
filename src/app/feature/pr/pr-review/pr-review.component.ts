@@ -36,7 +36,6 @@ export class PrReviewComponent implements OnInit {
     if(this.user == null){
       this.router.navigateByUrl('user/login');
     }
-    console.log(this.user.id.toString() + " is user id");
     this.prSvc.reviewList(this.user.id.toString()).subscribe(
       jresp =>{
         this.jr = jresp;
@@ -60,7 +59,6 @@ export class PrReviewComponent implements OnInit {
   }
   reasonAction(i:number){
     this.rejectId = i;
-    console.log("reject id set to " + this.rejectId)
     this.rejectPr = this.prs[i];
     this.rejectPrs = [this.rejectPr];
     this.prSvc.lines(this.rejectPr).subscribe(

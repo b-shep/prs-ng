@@ -25,9 +25,10 @@ import { PrLinesComponent } from './feature/pr/pr-lines/pr-lines.component';
 import { PrliEditComponent } from './feature/prli/prli-edit/prli-edit.component';
 import { PrliCreateComponent } from './feature/prli/prli-create/prli-create.component';
 import { PrReviewComponent } from './feature/pr/pr-review/pr-review.component';
+import { MenuComponent } from './core/menu/menu.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/user/list', pathMatch: 'full' },
+  {path:'', redirectTo: '/home', pathMatch: 'full' },
 
   {path:'user/list', component: UserListComponent},
   {path:'user/create', component: UserCreateComponent},

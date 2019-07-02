@@ -59,7 +59,6 @@ export class PrLinesComponent implements OnInit {
     this.prliSvc.delete(prliId).subscribe(
       jresp => {
         this.jr = jresp;
-        //this.router.navigate(['pr/lines/' + this.prIdStr]);
         this.ngOnInit();
       });
   }
